@@ -552,13 +552,27 @@ npm run build
 
 ### Deployment Guidelines
 
-#### Frontend (Vercel / Netlify)
+#### 1. Unified Full-Stack Deployment (Render Web Service) — *Recommended*
+Deploy both the React frontend client and the Express backend API together on a single Render Web Service:
+- **Root Directory**: Leave blank (repository root) or set to `server`
+- **Build Command**: `npm run build`
+- **Start Command**: `npm start`
+- **How It Works**: The build script (`node scripts/build-all.js` or root `package.json`) compiles the Vite frontend into `client/dist/` and compiles TypeScript into `server/dist/`. Express serves the production React client statically with SPA route fallback, while routing all `/api/v1` and WebSocket endpoints.
+- **Environment Variables**: Configure in Render dashboard:
+  - `NODE_ENV`: `production`
+  - `MONGODB_URI`: Your MongoDB Atlas connection string
+  - `JWT_SECRET`: Secret key (at least 16 chars)
+  - `CORS_ORIGIN`: `https://ai-powered-hospital.onrender.com`
+  - `CLIENT_URL`: `https://ai-powered-hospital.onrender.com`
+
+#### 2. Separate Frontend (Vercel / Netlify)
+If you prefer hosting the frontend separately from the backend:
 - **Root Directory**: `client`
 - **Build Command**: `npm run build`
 - **Output Directory**: `dist`
 - **Environment Variables**:
-  - `VITE_API_URL`: Your hosted backend URL (e.g. `https://api.yourhospital.com/api/v1`)
-  - `VITE_SOCKET_URL`: Your hosted backend URL (e.g. `https://api.yourhospital.com`)
+  - `VITE_API_URL`: Your hosted backend URL (e.g. `https://ai-powered-hospital.onrender.com/api/v1`)
+  - `VITE_SOCKET_URL`: Your hosted backend URL (e.g. `https://ai-powered-hospital.onrender.com`)
 - **Single Page Application (SPA) Routing**: Ensure all routes rewrite to `/index.html`:
   - For Vercel, include a `vercel.json` with:
     ```json
@@ -568,12 +582,6 @@ npm run build
     ```text
     /* /index.html 200
     ```
-
-#### Backend (Render / Railway / Google Cloud Run / Docker)
-- **Root Directory**: `server`
-- **Build Command**: `npm run build`
-- **Start Command**: `npm run start` (executes `node dist/index.js`)
-- **Environment Variables**: Configure all keys listed in [Backend Configuration](#backend-configuration-serverenv).
 
 ---
 

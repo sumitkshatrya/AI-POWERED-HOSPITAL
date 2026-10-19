@@ -4,7 +4,8 @@
   "description": "Backend API server for AI-Powered Hospital & Doctor Management Platform",
   "main": "dist/index.js",
   "scripts": {
-    "build": "node --max-old-space-size=4096 ./node_modules/typescript/bin/tsc",
+    "build": "node scripts/build-all.js",
+    "build:server": "node --max-old-space-size=4096 ./node_modules/typescript/bin/tsc",
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
     "db:seed": "tsx src/scripts/seed.ts",

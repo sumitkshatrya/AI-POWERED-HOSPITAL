@@ -43,7 +43,10 @@ export const OpdTokenDisplayScreen: React.FC = () => {
   useEffect(() => {
     fetchQueue();
 
-    const socketUrl = (import.meta as any).env?.VITE_SOCKET_URL || 'http://localhost:5000';
+    const rawSocketUrl = (import.meta as any).env?.VITE_SOCKET_URL;
+    const socketUrl = rawSocketUrl && rawSocketUrl.trim() !== ''
+      ? rawSocketUrl.trim()
+      : (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:5000');
     const socket: Socket = io(socketUrl, { transports: ['websocket', 'polling'] });
 
     socket.on('opd:queue-updated', () => {

@@ -113,7 +113,8 @@ export const labService = {
   },
 
   getLabReportPdfUrl: (orderId: string): string => {
-    const baseURL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:5000/api/v1';
+    const rawBase = (import.meta as any).env?.VITE_API_URL;
+    const baseURL = rawBase && rawBase.trim() !== '' ? rawBase.replace(/\/+$/, '') : '/api/v1';
     return `${baseURL}/labs/orders/${orderId}/pdf`;
   },
 };

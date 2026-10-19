@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: ai-powered-hospital
+    runtime: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CORS_ORIGIN
+        value: https://ai-powered-hospital.onrender.com
+      - key: CLIENT_URL
+        value: https://ai-powered-hospital.onrender.com

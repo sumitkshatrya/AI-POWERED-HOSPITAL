@@ -65,7 +65,8 @@ export const EmrTimelineView: React.FC<EmrTimelineViewProps> = ({ timeline, onUp
   };
 
   const handleDownloadPrescription = (id: string) => {
-    const baseURL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:5000/api/v1';
+    const rawBase = (import.meta as any).env?.VITE_API_URL;
+    const baseURL = rawBase && rawBase.trim() !== '' ? rawBase.replace(/\/+$/, '') : '/api/v1';
     window.open(`${baseURL}/prescriptions/${id}/pdf`, '_blank');
   };
 

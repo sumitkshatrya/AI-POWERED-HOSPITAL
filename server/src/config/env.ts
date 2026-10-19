@@ -1,7 +1,25 @@
 import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
 import { z } from 'zod';
 
 dotenv.config();
+
+// If MONGODB_URI is not set, attempt loading from server/.env or parent directories
+if (!process.env.MONGODB_URI) {
+  const envCandidates = [
+    path.resolve(process.cwd(), 'server/.env'),
+    path.resolve(__dirname, '../.env'),
+    path.resolve(__dirname, '../../.env'),
+    path.resolve(__dirname, '../../../.env'),
+  ];
+  for (const envPath of envCandidates) {
+    if (fs.existsSync(envPath)) {
+      dotenv.config({ path: envPath });
+      if (process.env.MONGODB_URI) break;
+    }
+  }
+}
 
 const envSchema = z.object({
   PORT: z.string().default('5000'),
