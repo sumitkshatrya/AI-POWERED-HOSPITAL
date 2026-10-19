@@ -1,0 +1,118 @@
+# ==============================================================================
+# MediCore AI-Powered Hospital & Doctor Management Platform - Root .gitignore
+# Stack: Full-Stack Monorepo
+#   - Frontend: React 18, Vite, TypeScript, TailwindCSS
+#   - Backend: Node.js, Express, TypeScript, Mongoose (MongoDB), Socket.IO, Jest
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Dependencies & Package Managers
+# ------------------------------------------------------------------------------
+node_modules/
+*/node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# ------------------------------------------------------------------------------
+# Production Build & Compilation Output
+# ------------------------------------------------------------------------------
+dist/
+*/dist/
+dist-ssr/
+*/dist-ssr/
+build/
+*/build/
+out/
+*/out/
+*.tsbuildinfo
+*/tsconfig.tsbuildinfo
+
+# ------------------------------------------------------------------------------
+# Environment Variables & Sensitive Secrets
+# ------------------------------------------------------------------------------
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*/.env
+*/.env.*
+*/.env.local
+*/.env.development.local
+*/.env.test.local
+*/.env.production.local
+
+# Explicitly keep safe environment variable templates trackable
+!.env.example
+!*/.env.example
+
+# ------------------------------------------------------------------------------
+# Runtime Uploads, Clinical Documents & Temporary Storage
+# ------------------------------------------------------------------------------
+uploads/
+*/uploads/
+!uploads/.gitkeep
+!*/uploads/.gitkeep
+temp/
+*/temp/
+tmp/
+*/tmp/
+
+# ------------------------------------------------------------------------------
+# Logs & Process Output
+# ------------------------------------------------------------------------------
+logs/
+*/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ------------------------------------------------------------------------------
+# Testing & Code Coverage
+# ------------------------------------------------------------------------------
+coverage/
+*/coverage/
+*.lcov
+.nyc_output/
+
+# ------------------------------------------------------------------------------
+# Caches & Tooling Artifacts
+# ------------------------------------------------------------------------------
+.cache/
+*/.cache/
+.vite/
+*/.vite/
+.eslintcache
+.stylelintcache
+*.pid
+*.seed
+*.pid.lock
+
+# ------------------------------------------------------------------------------
+# IDE, Editor & OS Files
+# ------------------------------------------------------------------------------
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+

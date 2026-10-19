@@ -1,0 +1,41 @@
+# ==============================================================================
+# MediCore Backend Server .gitignore (Node.js + Express + TypeScript + MongoDB + Jest)
+# ==============================================================================
+
+# Dependencies
+node_modules/
+
+# TypeScript build & incremental cache
+dist/
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Environment variables & secrets (keep .env.example trackable)
+.env
+.env.*
+.env.local
+.env.test
+!.env.example
+
+# Runtime uploads & clinical documents
+uploads/
+!uploads/.gitkeep
+
+# Testing & Coverage
+coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
